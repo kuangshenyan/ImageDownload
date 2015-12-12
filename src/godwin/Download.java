@@ -19,11 +19,12 @@ public class Download {
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
+		//the url just is a example. 
 		String ImageUrl = "http://www.bz55.com/uploads/allimg/150309/139-150309101A8.jpg";
 		URL url = GetURL(ImageUrl);
 		Integer FileNum;
 		Random random = new Random(47);
-		FileNum = random.nextInt();
+		FileNum = random.nextInt();//get a name random, convenience to save it to disk
 		ImageDownload(url, FileNum.toString()+".jpg", "G:\\ImageDownlaod");
 	}
 	
