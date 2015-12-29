@@ -13,19 +13,33 @@ package godwin;
 
 import java.io.*;
 import java.net.*;
+import java.util.ArrayList;
 import java.util.Random;
+import godwin.LineRead;
 
 public class Download {
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		//the url just is a example. 
-		String ImageUrl = "http://www.bz55.com/uploads/allimg/150309/139-150309101A8.jpg";
-		URL url = GetURL(ImageUrl);
+		//String ImageUrl = "http://www.bz55.com/uploads/allimg/150309/139-150309101A8.jpg";
+		//LineRead lineread = new LineRead();
+		
+		ArrayList<String> ImageUrlList = new ArrayList<>();
 		Integer FileNum;
 		Random random = new Random(47);
-		FileNum = random.nextInt();//get a name random, convenience to save it to disk
-		ImageDownload(url, FileNum.toString()+".jpg", "G:\\ImageDownlaod");
+		
+		ImageUrlList = LineRead.GetURLFromTxt();
+		
+		for(int i = 0; i < ImageUrlList.size(); i++){
+			//暂时不明白为什么有些网址的图片下载不了。
+			URL url = GetURL(ImageUrlList.get(i).toString());
+			//System.out.println(ImageUrlList.get(i).toString());
+			FileNum = random.nextInt();//get a name random, convenience to save it to disk
+			ImageDownload(url, FileNum.toString()+".jpg", "G:\\ImageDownlaod");
+			
+		}
+		
 	}
 	
 	public static URL GetURL(String ImageUrl) throws MalformedURLException{
